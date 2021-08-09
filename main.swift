@@ -35,18 +35,30 @@ for _ in (1...100) {
     //  print(oneHundredNumbersArry) // Закомментировал, чтобы не засорять console
 }
 
-
-//Задание №4  решил 3 способами
-func arrayProcessing( _ arrayValue: [Int]) ->[Int] {
-    var arrayValue = arrayValue
-    arrayValue = arrayValue.filter(){ $0 % 2 != 0 } //Удаляем из массива все нечётный числа
-    arrayValue = arrayValue.filter(){ $0 % 3 == 0 } //Удаляем из массива все числа которые не делятся на 3
-    //    arrayValue.removeAll(where: { $0 % 2 != 0 }) //   Второй вариант решения
-    //    arrayValue.removeAll(where: { $0 % 3 == 0 })
-    print(arrayValue)
-    return arrayValue
+for i in (1...100) {
+    let index = oneHundredNumbersArray.firstIndex(of: i)!
+    if ( oneHundredNumbersArray[index] % 2 != 0 ) {
+       oneHundredNumbersArray.remove(at: index)
+    } else if ( oneHundredNumbersArray[index] % 3 == 0 ) {
+        oneHundredNumbersArray.remove(at: index)
+    }
 }
-oneHundredNumbersArray = arrayProcessing( oneHundredNumbersArray )
+
+print(oneHundredNumbersArray)
+
+
+
+////Задание №4  решил 3 способами
+//func arrayProcessing( _ arrayValue: [Int]) ->[Int] {
+//    var arrayValue = arrayValue
+//    arrayValue = arrayValue.filter(){ $0 % 2 != 0 } //Удаляем из массива все нечётный числа
+//    arrayValue = arrayValue.filter(){ $0 % 3 == 0 } //Удаляем из массива все числа которые не делятся на 3
+//    //    arrayValue.removeAll(where: { $0 % 2 != 0 }) //   Второй вариант решения
+//    //    arrayValue.removeAll(where: { $0 % 3 == 0 })
+//    print(arrayValue)
+//    return arrayValue
+//}
+//oneHundredNumbersArray = arrayProcessing( oneHundredNumbersArray )
 
 // 3-й вариант решения
 //var newArray: [Int] = []
@@ -58,7 +70,7 @@ oneHundredNumbersArray = arrayProcessing( oneHundredNumbersArray )
 // Задание 5
 
 var arrayFromNewNumber: [Int] = []
-var firstNumber = Int.random(in: 0...10)
+var firstNumber = Int.random(in: 0...1)
 
 // Сначало формируем нужное нам число
 func numberFib( number: Int) -> Int {
@@ -84,7 +96,7 @@ addNewNumberInArray( arrayFromNewNumber )
 //Задание 6, выполнил как понял
 
 var arrayOfPrimeNumbers: [Int] = []
-//Заполнение массива простыми числами, первый способ
+//Заполнение массива простыми числами
 for elem in (2...1000)  {
     if (arrayOfPrimeNumbers.count == 100 ) {
         break
@@ -92,30 +104,10 @@ for elem in (2...1000)  {
         arrayOfPrimeNumbers.append( elem )
     } else if (elem > 3 && elem < 10 && elem % 2 != 0 ) {
         arrayOfPrimeNumbers.append( elem )
-    } else if (elem > 9 && elem % 2 != 0 && elem % 3 != 0 && elem % 5 != 0 && elem % 7 != 0 && elem % 9 != 0) {
+    } else if (elem > 9 && elem % 2 != 0 && elem % 3 != 0 && elem % 5 != 0 && elem % 7 != 0) {
         arrayOfPrimeNumbers.append( elem )
     }
 }
 print(arrayOfPrimeNumbers)
-
-//Второй способ по средствам нескольких циклов (не доделал)
-//var firstArray: [Int] = []
-//var secondArray: [Int] = []
-//var p = 2
-//
-//for item in (2...1000) where (item <= 2 || (item > 2 && item % p != 0)) {
-//    firstArray.append( item )
-//    if (item == 1000) {
-//        p = 3
-//
-//    }
-//}
-//
-//for item in firstArray where (item <= 3 || (item > 3 && item % p != 0)) {
-//    secondArray.append( item )
-//    if (item == firstArray.count) {
-//        p += 2
-//    }
-//}
 
 
